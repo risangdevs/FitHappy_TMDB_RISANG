@@ -55,7 +55,7 @@ export default function Detail({ route, navigation }: DetailProps) {
                     >
                       <Text style={[styles.subtitle, {}]}>Release</Text>
                       <Text style={[styles.description, { marginBottom: 10 }]}>
-                        {s.air_date.split("-")[0]}
+                        {s.air_date?s.air_date.split("-")[0]:"-"}
                       </Text>
                       <Text style={[styles.subtitle, {}]}>Episodes</Text>
 
@@ -70,6 +70,7 @@ export default function Detail({ route, navigation }: DetailProps) {
                       navigation.navigate("Modal", {
                         name: s.name,
                         desc: s.overview,
+                        img:useImageUrl(s.poster_path)
                       })
                     }
                   >

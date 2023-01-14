@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Platform, StyleSheet } from "react-native";
+import { Platform, StyleSheet, Image } from "react-native";
 
 import { Text, View } from "../components/Themed";
 interface DetailProps {
@@ -7,9 +7,10 @@ interface DetailProps {
   navigation: any;
 }
 export default function ModalScreen({ navigation, route }: DetailProps) {
-  const { name, desc } = route.params;
+  const { name, desc, img } = route.params;
   return (
     <View style={styles.container}>
+      <Image style={{borderRadius:20,marginBottom:20, width:"80%",height:'50%'}} source={{ uri: img }} />
       <Text style={styles.title}>{name}</Text>
       <View
         style={styles.separator}
