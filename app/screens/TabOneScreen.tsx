@@ -20,6 +20,7 @@ export default function TabOneScreen({
         page={currentPage}
         isLoading={isLoading}
         setPage={setPage}
+        navigation={navigation}
       />
     </View>
   );

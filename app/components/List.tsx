@@ -19,9 +19,16 @@ interface ListProps {
   page: number;
   isLoading: Boolean;
   setPage: any;
+  navigation: any;
 }
 
-export default function List({ tv, page, isLoading, setPage }: ListProps) {
+export default function List({
+  tv,
+  page,
+  isLoading,
+  setPage,
+  navigation,
+}: ListProps) {
   const [scrollPosition, setScrollPosition] = useState<number>();
   const [contentHeight, setContentHeight] = useState<number>();
   const listRef = useRef<any>(null);
@@ -61,7 +68,10 @@ export default function List({ tv, page, isLoading, setPage }: ListProps) {
         {tv &&
           tv.map((e, i) => {
             return (
-              <TouchableOpacity key={i} onPress={() => console.log(e.id)}>
+              <TouchableOpacity
+                key={i}
+                onPress={() => navigation.navigate("Detail", { id: e.id })}
+              >
                 <View style={styles.card}>
                   <View>
                     <Image
