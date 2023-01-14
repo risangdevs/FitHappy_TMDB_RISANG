@@ -1,17 +1,11 @@
-import * as WebBrowser from "expo-web-browser";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-  ActivityIndicator,
+  ActivityIndicator, Image, ScrollView, StyleSheet,
+  TouchableOpacity
 } from "react-native";
 
-import Colors from "../constants/Colors";
 import { useImageUrl } from "../hooks/useImageUrl";
-import { pagination, TV } from "../types/index";
-import { MonoText } from "./StyledText";
+import { TV } from "../types/index";
 import { Text, View } from "./Themed";
 
 interface ListProps {

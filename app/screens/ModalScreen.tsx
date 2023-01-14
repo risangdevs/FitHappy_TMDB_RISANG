@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { Platform, StyleSheet, Image } from "react-native";
+import { Image, Platform, StyleSheet } from "react-native";
 
 import { Text, View } from "../components/Themed";
 interface DetailProps {

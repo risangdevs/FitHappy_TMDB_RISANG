@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { Alert } from "react-native";
 import MovieService from "../services/movie-service";
 import { pagination, TV } from "../types/index";

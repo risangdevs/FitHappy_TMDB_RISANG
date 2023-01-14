@@ -1,7 +1,7 @@
-import { TVDetail } from "../types/index";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { Alert } from "react-native";
 import MovieService from "../services/movie-service";
+import { TVDetail } from "../types/index";
 export const useDetail = (id: string) => {
     const [detail, setDetail] = useState<TVDetail>()
     const { getTVDetail } = MovieService();

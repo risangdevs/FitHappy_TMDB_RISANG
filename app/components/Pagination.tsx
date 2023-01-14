@@ -1,5 +1,5 @@
+import { Dimensions, StyleSheet, Text, TouchableOpacity } from "react-native";
 import { View } from "./Themed";
-import { Dimensions, TouchableOpacity, Text, StyleSheet } from "react-native";
 
 export const Pagination = (props: any) => {
   const { currentPage, setPage, isLoading } = props;

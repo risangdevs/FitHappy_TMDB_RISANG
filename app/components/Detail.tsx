@@ -1,14 +1,11 @@
-import { useDetail } from "../hooks/useDetail";
-import { Text, View } from "./Themed";
 import {
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-  Image,
-  ActivityIndicator,
+    ActivityIndicator, Image, ScrollView, StyleSheet,
+    TouchableOpacity
 } from "react-native";
+import { useDetail } from "../hooks/useDetail";
 import { useImageUrl } from "../hooks/useImageUrl";
 import { Seasons } from "../types/index";
+import { Text, View } from "./Themed";
 
 interface DetailProps {
   route: any;
