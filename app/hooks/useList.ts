@@ -12,9 +12,10 @@ export const useList = (pageNumber: number = 1) => {
         const getData = async () => {
             setIsLoading(true)
             try {
-                const { data, page, total_pages, total_result } = await getPopularTV(pageNumber);
-                setTV(data);
-                setPagination({ page, total_pages, total_result })
+                const { data } = await getPopularTV(pageNumber);
+                const { results, page, total_pages, total_results } = data
+                setTV(results);
+                setPagination({ page, total_pages, total_results })
             } catch (error: any) {
                 Alert.alert("Fetch Error", error?.message, [{ text: "OK" }]);
             } finally {

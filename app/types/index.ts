@@ -7,7 +7,7 @@ export interface TVs {
 export interface pagination {
     page: number,
     total_pages: number,
-    total_result: number
+    total_results: number
 }
 
 export interface TV {

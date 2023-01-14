@@ -1,29 +1,38 @@
-import { StyleSheet } from "react-native";
+import {
+  StyleSheet,
+  Touchable,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
 
-import EditScreenInfo from "../components/EditScreenInfo";
+import { useState } from "react";
+import List from "../components/List";
 import { Text, View } from "../components/Themed";
-import MovieService from "../services/movie-service";
-import { RootTabScreenProps } from "../types";
-import { useEffect, useState } from "react";
-import { TV } from "../types/index";
-import { Alert } from "react-native";
 import { useList } from "../hooks/useList";
-
+import { RootTabScreenProps } from "../types";
+import { pagination, TV } from "../types/index";
+import { Dimensions } from "react-native";
+import { Pagination } from "../components/Pagination";
+import { FontAwesome } from "@expo/vector-icons";
+import { SearchBar } from "../components/SearchBar";
 export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<"TabOne">) {
   const [currentPage, setPage] = useState<number>(1);
   const { tv, pagination, isLoading } = useList(currentPage);
-  console.log(isLoading)
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
+      <SearchBar />
+      <List
+        tv={tv as TV[]}
+        page={pagination as pagination}
+        isLoading={isLoading}
       />
-      <EditScreenInfo path="/screens/TabOneScreen.tsx" />
+      <Pagination
+        currentPage={currentPage}
+        setPage={setPage}
+        isLoading={isLoading}
+      />
     </View>
   );
 }
@@ -32,7 +41,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
   },
   title: {
     fontSize: 20,

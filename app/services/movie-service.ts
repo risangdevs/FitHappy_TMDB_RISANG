@@ -1,4 +1,3 @@
-import { TVs } from "../types/index";
 import ApiService from "./api";
 
 const apiKey = 'api_key=4fb5a5e9f2f89c51545cabb82aec4bcd'
@@ -7,7 +6,7 @@ const MovieService = () => {
         baseURL: "https://api.themoviedb.org/3/", headers: ApiService.constructHeaders(null)
     })
 
-    const getPopularTV = async (pageNumber: number): Promise<TVs> => {
+    const getPopularTV = async (pageNumber: number) => {
         return await apiClient.get(`tv/popular?${apiKey}&page=${pageNumber}`)
     }
 
