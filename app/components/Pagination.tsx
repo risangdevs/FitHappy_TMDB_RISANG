@@ -52,10 +52,7 @@ const styles = StyleSheet.create({
     height: "40%",
     borderRadius: 10,
     backgroundColor: "#FD8A8A",
-    opacity: .7,shadowColor: "#171717",
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
+    opacity: .7,
   },
   text: {
     marginHorizontal: "auto",

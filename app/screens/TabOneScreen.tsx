@@ -1,20 +1,12 @@
-import {
-  StyleSheet,
-  Touchable,
-  TouchableOpacity,
-  TextInput,
-} from "react-native";
+import { StyleSheet } from "react-native";
 
 import { useState } from "react";
 import List from "../components/List";
-import { Text, View } from "../components/Themed";
+import { SearchBar } from "../components/SearchBar";
+import { View } from "../components/Themed";
 import { useList } from "../hooks/useList";
 import { RootTabScreenProps } from "../types";
-import { pagination, TV } from "../types/index";
-import { Dimensions } from "react-native";
-import { Pagination } from "../components/Pagination";
-import { FontAwesome } from "@expo/vector-icons";
-import { SearchBar } from "../components/SearchBar";
+import { TV } from "../types/index";
 export default function TabOneScreen({
   navigation,
 }: RootTabScreenProps<"TabOne">) {
@@ -25,13 +17,9 @@ export default function TabOneScreen({
       <SearchBar />
       <List
         tv={tv as TV[]}
-        page={pagination as pagination}
+        page={currentPage}
         isLoading={isLoading}
-      />
-      <Pagination
-        currentPage={currentPage}
         setPage={setPage}
-        isLoading={isLoading}
       />
     </View>
   );

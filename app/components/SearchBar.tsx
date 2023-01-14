@@ -10,7 +10,7 @@ export const SearchBar = () => {
         placeholder="Search Movies..."
       ></TextInput>
       <TouchableOpacity style={styles.searchButton}>
-        <FontAwesome name="search" size={40} />
+        <FontAwesome name="search" size={40} color={"#65647C"} />
       </TouchableOpacity>
     </View>
   );
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginLeft: 40,
     marginRight: 40,
-    borderColor: "grey",
+    borderColor: "#65647C",
     borderWidth: 2,
     borderRadius: 10,
   },

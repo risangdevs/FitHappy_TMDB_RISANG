@@ -1,5 +1,12 @@
 import * as WebBrowser from "expo-web-browser";
-import { StyleSheet, TouchableOpacity, ScrollView, Image } from "react-native";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+  Image,
+  ActivityIndicator,
+} from "react-native";
 
 import Colors from "../constants/Colors";
 import { useImageUrl } from "../hooks/useImageUrl";
@@ -9,18 +16,48 @@ import { Text, View } from "./Themed";
 
 interface ListProps {
   tv: Array<TV>;
-  page: pagination;
+  page: number;
   isLoading: Boolean;
+  setPage: any;
 }
 
-export default function List({
-  tv,
-  page = { page: 1, total_pages: 1, total_results: 1 },
-  isLoading,
-}: ListProps) {
+export default function List({ tv, page, isLoading, setPage }: ListProps) {
+  const [scrollPosition, setScrollPosition] = useState<number>();
+  const [contentHeight, setContentHeight] = useState<number>();
+  const listRef = useRef<any>(null);
+  useEffect(() => {
+    if ((scrollPosition as number) === 0 && page > 2 && !isLoading) {
+      const currentPage = page;
+      setPage(currentPage - 1);
+    }
+
+    if (
+      (contentHeight as number) - (scrollPosition as number) <= 1000 &&
+      !isLoading
+    ) {
+      const currentPage = page;
+      setPage(currentPage + 1);
+    }
+  }, [scrollPosition, contentHeight]);
+  useEffect(() => {
+    if (page >= 2 && listRef) {
+      listRef?.current?.scrollTo({
+        y: 9056,
+        animate: true,
+      });
+    }
+  }, [tv]);
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView
+      ref={listRef}
+      style={styles.scrollView}
+      onMomentumScrollEnd={(e) => {
+        setScrollPosition(e.nativeEvent.contentOffset.y);
+        setContentHeight(e.nativeEvent.contentSize.height);
+      }}
+    >
       <View style={styles.getStartedContainer}>
+        {page > 2 && <ActivityIndicator size="large" color="#FD8A8A" />}
         {tv &&
           tv.map((e, i) => {
             return (
@@ -65,6 +102,7 @@ export default function List({
               </TouchableOpacity>
             );
           })}
+        <ActivityIndicator size="large" color="#FD8A8A" />
       </View>
     </ScrollView>
   );
